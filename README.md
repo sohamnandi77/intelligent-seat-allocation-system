@@ -14,9 +14,9 @@
 	- Find Path variable in System variables box
 	- Select Path varible and click on edit button
 	- Copy paste the followin at the end 
-
+```
 C:\Python34;C:\Python34\python.exe;C:\Python34\Scripts\
-
+```
 
 4. Copy paste the whole project file  intelligent seat allocation system to desktop
 
