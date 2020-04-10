@@ -1,76 +1,37 @@
 # ---------------Installation instructions for Windows --------
 
-1. Install the python setup file in Installation folder
+1. Install the pakages given in the requirements.txt file
+	- pip install -r requirements.txt
 
-2. Install Xampp setup file in the Installation folder (if the given setup doesnot work please download a setup from https://www.apachefriends.org/download.html)
+2. Create the database by writing following commands on python(if there is an existing database created - Delete it): 
+	- from seatbooking import db
+	- db.create_all()
 
-3. Set the environment variables<br> 
-	3.1. Go to My computer Properties<br>
-	3.2. Click on Advance System settings<br> 
-	3.3. Dialogue box will appear.Click on Environment Variables button<br>
-	3.4  Find Path variable in System variables box<br>
-	3.5 Select Path varible and click on edit button<br>
-	3.6 copy paste the followin at the end 
-```
-	C:\Python34;C:\Python34\python.exe;C:\Python34\Scripts\;C:\Python34\Lib\site-packages\django\bin;C:\xampp\mysql\bin;
-```
-4. Go to start n type xampp
-  	- open xampp control and start Apache and MySQL
-	- Click on MySQL admin 
-	- create a database named bus_reservation
-	- Go into that Database bus_reservation
-	- Import the bus_reservation.sql file into the database
+3. Set the environment variables 
+	- Go to My computer Properties
+	- Click on Advance System settings 
+	- Dialogue box will appear.Click on Environment Variables button
+	- Find Path variable in System variables box
+	- Select Path varible and click on edit button
+	- Copy paste the followin at the end 
 
-5. Copy paste the whole project file  Bus_reservation system to desktop
+C:\Python34;C:\Python34\python.exe;C:\Python34\Scripts\
 
-6. Open Cmd and Go to the Directory where the project is to be created and enter the following commands
+
+4. Copy paste the whole project file  intelligent seat allocation system to desktop
+
+5. Open Cmd and Go to the Directory where the project is to be created and enter the following commands
  ```
 cd Desktop
  ```
  ```
-cd Bus_reservation
+cd intelligent seat allocation system
  ```
  ```
- .\Scripts\activate
- ```
- ```
- cd src
- ```
- ```
-python manage.py runserver
+python main.py
 ```
-7. Goto your Browser and enter the following url
-	http://localhost:8000/
-8. For admin panel enter the following url
-	http://localhost:8000/admin
-## Login for admin panel :
- 	Username = bus_admin
-	password= bus123456 
+6. Goto your Browser and enter the following url
+	http://localhost:5000/
 
 -------------------------------------------------------------------------------------------------------------------
 
-## Additional information - How to create a project in Django steps
-```
-virtualenv Project_name_env
-```
-```
-cd Shoplyne
-```
-```
-.\Scripts\activate
-```
-```
-pip insatall Django
-```
-```
-.\Scripts\django-admin startproject Project_name
-```
-```
-pip install mysqlclient==1.3.6
-```
-```
-py manage.py startapp app_name
-```
-```
-py manage.py migrate
-```
