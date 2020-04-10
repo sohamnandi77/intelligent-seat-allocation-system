@@ -1,5 +1,8 @@
 # ---------------Installation instructions for Windows --------
 
+(first, confirm that your pip is working)
+(Also, python version 3.7.0+ is recommended)
+
 1. Install the pakages given in the requirements.txt file
 	- pip install -r requirements.txt
 
