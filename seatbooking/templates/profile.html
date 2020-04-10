@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Intelligent Sear Booking System Booking System</title>
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!--external css-->
+  <link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style-responsive.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+  {% block content %}
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="{{ url_for('home') }}" class="logo"><b>VORM<span>II</span>R</b></a>
+      <!--logo end-->
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='img/ui-sam.jpg') }}" class="img-circle" width="80"></a></p>
+          
+          <h5 class="centered">{{ current_user.username }}</h5>
+          <li class="mt">
+            <a href="{{ url_for('profile') }}">
+              <i class="fa fa-dashboard"></i>
+              <span>Dashboard</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-desktop"></i>
+              <span>Booking</span>
+              </a>
+            <ul class="sub">
+              <li><a href="{{ url_for('booking_invoice') }}">Book Now</a></li>
+              <li><a href="{{ url_for('booking_info') }}">Booking info</a></li>
+            </ul>
+          </li>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper site-min-height">
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="row content-panel">
+              <div class="col-md-4 profile-text mt mb centered">
+                <div class="right-divider hidden-sm hidden-xs">
+                  <h4>{{ current_user.age }}</h4>
+                  <h6>Age</h6>
+                  <h4>{{ current_user.gender }}</h4>
+                  <h6>Gender</h6>
+                </div>
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 profile-text">
+                <h3>{{ current_user.username }}</h3>
+                <h6>User</h6>
+                <h4>{{ current_user.email }}</h4>
+                <h6>E-mail</h6>
+                <br>
+                <p><button class="btn btn-theme"><i class="fa fa-envelope"></i> Contact Us</button></p>
+              </div>
+              <!-- /col-md-4 -->
+              <div class="col-md-4 centered">
+                <div class="profile-pic">
+                  <p><img src="{{ url_for('static', filename='img/ui-sam.jpg') }}" class="img-circle"></p>
+                </div>
+              </div>
+              <!-- /col-md-4 -->
+            </div>
+            <!-- /row -->
+          </div>
+          <!-- /col-lg-12 -->
+          <div class="col-lg-12 mt">
+            <div class="row content-panel">
+              <div class="panel-heading">
+                <ul class="nav nav-tabs nav-justified">
+                  <!-- <li class="active">
+                    <a data-toggle="tab" href="#overview">Overview</a>
+                  </li> -->
+                  <li class="active">
+                    <a data-toggle="tab" href="#contact" class="contact-map">Contact</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#edit">Edit Profile</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /panel-heading -->
+              <div class="panel-body">
+                <div class="tab-content">
+                  <div id="contact" class="tab-pane active">
+                    <div class="row">
+                      <section class="wrapper">
+                        <h3><i class="fa fa-angle-right"></i> Contact Form</h3>
+                        <!-- BASIC FORM ELELEMNTS -->
+                        <div class="row mt">
+                          <div class="col-lg-6 col-md-6 col-sm-6">
+                            <h4 class="title">Contact Form</h4>
+                            <div id="message"></div>
+                            <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php" method="POST">
+                
+                              <div class="form-group">
+                                <input type="name" name="name" class="form-control" id="contact-name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >
+                                <div class="validate"></div>
+                              </div>
+                              <div class="form-group">
+                                <input type="email" name="email" class="form-control" id="contact-email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                                <div class="validate"></div>
+                              </div>
+                              <div class="form-group">
+                                <input type="text" name="subject" class="form-control" id="contact-subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                                <div class="validate"></div>
+                              </div>
+                
+                              <div class="form-group">
+                                <textarea class="form-control" name="message" id="contact-message" placeholder="Your Message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
+                                <div class="validate"></div>
+                              </div>
+                
+                              <div class="loading"></div>
+                              <div class="error-message"></div>
+                              <div class="sent-message">Your message has been sent. Thank you!</div>
+                
+                              <div class="form-send">
+                                <button type="submit" class="btn btn-large btn-primary">Send Message</button>
+                              </div>
+                
+                            </form>
+                          </div>
+                
+                          <div class="col-lg-6 col-md-6 col-sm-6">
+                            <h4 class="title">Contact Details</h4>
+                            <p>We are here to help you always.</p>
+                            <ul class="contact_details">
+                              <li><i class="fa fa-envelope-o"></i> vormiir.com</li>
+                              <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
+                              <li><i class="fa fa-home"></i> Lovely Professional University, Phagwara, Punjab</li>
+                            </ul>
+                            <!-- contact_details -->
+                          </div>
+                        </div>
+                        <!-- /row -->
+                      </section>
+                      <!-- /wrapper -->
+                    </div>
+                    <!-- /row -->
+                  </div>
+                  <!-- /tab-pane -->
+                  <div id="edit" class="tab-pane">
+                    <div class="row">
+                      <div class="col-lg-8 col-lg-offset-2 detailed">
+                        <h4 class="mb">Personal Information</h4>
+                        <form role="form" class="form-horizontal">
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label"> Avatar</label>
+                            <div class="col-lg-6">
+                              <input type="file" id="exampleInputFile" class="file-pos">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Company</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="c-name" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Lives In</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="lives-in" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Country</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="country" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Description</label>
+                            <div class="col-lg-10">
+                              <textarea rows="10" cols="30" class="form-control" id="" name=""></textarea>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-lg-8 col-lg-offset-2 detailed mt">
+                        <h4 class="mb">Contact Information</h4>
+                        <form role="form" class="form-horizontal">
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Address 1</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="addr1" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Address 2</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="addr2" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Phone</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="phone" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Cell</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="cell" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="email" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-2 control-label">Skype</label>
+                            <div class="col-lg-6">
+                              <input type="text" placeholder=" " id="skype" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                              <button class="btn btn-theme" type="submit">Save</button>
+                              <button class="btn btn-theme04" type="button">Cancel</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <!-- /col-lg-8 -->
+                    </div>
+                    <!-- /row -->
+                  </div>
+                  <!-- /tab-pane -->
+                </div>
+                <!-- /tab-content -->
+              </div>
+              <!-- /panel-body -->
+            </div>
+            <!-- /col-lg-12 -->
+          </div>
+          <!-- /row -->
+        </div>
+        <!-- /container -->
+      </section>
+      <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+      <div class="text-center">
+        <p>
+          &copy; Copyrights <strong>Vormiir</strong>. All Rights Reserved
+        </p>
+        <a href="profile.html#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script class="include" type="text/javascript" src="{{ url_for('static', filename='lib/jquery.dcjqaccordion.2.7.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/jquery.scrollTo.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/jquery.nicescroll.js') }}" type="text/javascript"></script>
+  <!--common script for all pages-->
+  <script src="{{ url_for('static', filename='lib/common-scripts.js') }}"></script>
+  {% endblock content %}
+</body>
+
+</html>
