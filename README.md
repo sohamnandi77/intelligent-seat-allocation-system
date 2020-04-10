@@ -4,15 +4,16 @@
 
 2. Install Xampp setup file in the Installation folder (if the given setup doesnot work please download a setup from https://www.apachefriends.org/download.html)
 
-3. Set the environment variables 
-	3.1. Go to My computer Properties
-	3.2. Click on Advance System settings 
-	3.3. Dialogue box will appear.Click on Environment Variables button
-	3.4  Find Path variable in System variables box
-	3.5 Select Path varible and click on edit button
+3. Set the environment variables<br> 
+	3.1. Go to My computer Properties<br>
+	3.2. Click on Advance System settings<br> 
+	3.3. Dialogue box will appear.Click on Environment Variables button<br>
+	3.4  Find Path variable in System variables box<br>
+	3.5 Select Path varible and click on edit button<br>
 	3.6 copy paste the followin at the end 
-C:\Python34;C:\Python34\python.exe;C:\Python34\Scripts\;C:\Python34\Lib\site-packages\django\bin;C:\xampp\mysql\bin;
-
+```
+	C:\Python34;C:\Python34\python.exe;C:\Python34\Scripts\;C:\Python34\Lib\site-packages\django\bin;C:\xampp\mysql\bin;
+```
 4. Go to start n type xampp
   	- open xampp control and start Apache and MySQL
 	- Click on MySQL admin 
